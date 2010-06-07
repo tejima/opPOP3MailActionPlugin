@@ -24,7 +24,7 @@ class POP3Task extends sfBaseTask
       $mail = new Zend_Mail_Storage_Pop3(
          array('host' => 'pop.gmail.com' ,
               'user' => '20100608test@pne.jp',
-              'password' => 'gatagata',
+              'password' => 'xxxxxxxx',
               'ssl' => 'SSL',
               'port' => 995)
          );
