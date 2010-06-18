@@ -13,7 +13,7 @@
  *
  * @package    OpenPNE
  * @subpackage opPOP3MailActionPlugin
- * @author     Your name here
+ * @author     Mamoru Tejima <tejima@tejimaya.com>
  * @version    SVN: $Id: actions.class.php 9301 2008-05-27 01:08:46Z dwhittle $
  */
 class opPOP3MailActionPluginActions extends sfActions
@@ -25,6 +25,15 @@ class opPOP3MailActionPluginActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    $this->form = new POP3MailActionPluginConfigForm();
+    if ($request->isMethod(sfWebRequest::POST))
+    {
+      $this->form->bind($request->getParameter('pop3'));
+      if ($this->form->isValid())
+      {
+        $this->form->save();
+        $this->redirect('opPOP3MailActionPlugin/index');
+      }
+    }
   }
 }
